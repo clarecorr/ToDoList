@@ -40,6 +40,7 @@ namespace ToDoList.Controllers
         {
             return View();
         }
+        
 
         // POST: Lists/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
@@ -50,6 +51,7 @@ namespace ToDoList.Controllers
         {
             if (ModelState.IsValid)
             {
+                list.ListCreateDate = DateTime.Now;
                 db.Lists.Add(list);
                 db.SaveChanges();
                 return RedirectToAction("Index");

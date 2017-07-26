@@ -12,13 +12,12 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.IsDone)
+        </th>KD<th>
             @Html.DisplayNameFor(model => model.List.ListTitle)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TaskDescription)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IsDone)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DueDate)
@@ -29,13 +28,13 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.IsDone)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.List.ListTitle)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TaskDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDone)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DueDate)
