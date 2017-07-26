@@ -128,5 +128,17 @@ namespace ToDoList.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult CompletedTasks()
+        {
+            var tasks = db.Tasks.Include(t => t.List);
+            return View(tasks.ToList());
+        }
+
+        public ActionResult OverdueTasks()
+        {
+            var tasks = db.Tasks.Include(t => t.List);
+            return View(tasks.ToList());
+        }
     }
 }

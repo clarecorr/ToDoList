@@ -4,7 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+
+
+<h2>Overdue Tasks</h2>
+@{
+    Html.RenderPartial("OverdueTasks");
+}
+
+<h2>All Tasks</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -13,7 +20,8 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.IsDone)
-        </th>KD<th>
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.List.ListTitle)
         </th>
         <th>
@@ -25,26 +33,32 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsDone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.List.ListTitle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TaskDescription)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DueDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.TaskID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.TaskID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.TaskID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.List.ListTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TaskDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TaskID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.TaskID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TaskID })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<h2>Completed Tasks</h2>
+@{
+    Html.RenderPartial("CompletedTasks");
+}
