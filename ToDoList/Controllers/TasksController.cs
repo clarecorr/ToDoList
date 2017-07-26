@@ -140,5 +140,28 @@ namespace ToDoList.Controllers
             var tasks = db.Tasks.Include(t => t.List);
             return View(tasks.ToList());
         }
+        public ActionResult ToggleDone(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Task task = db.Tasks.Find(id);
+            if(task.IsDone)
+            {
+                task.IsDone = false;
+            }
+            else
+            {
+                task.IsDone = true;
+            }
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(task);
+        }
+
     }
 }
