@@ -147,7 +147,11 @@ namespace ToDoList.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Task task = db.Tasks.Find(id);
-            if(task.IsDone)
+            if (task == null)
+            {
+                return HttpNotFound();
+            }
+            if (task.IsDone)
             {
                 task.IsDone = false;
             }
@@ -155,12 +159,10 @@ namespace ToDoList.Controllers
             {
                 task.IsDone = true;
             }
-            if (task == null)
-            {
-                return HttpNotFound();
-            }
-            
-            return View(task);
+
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
     }

@@ -19,8 +19,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.IsDone)
-            @Html.ActionLink("ToggleDone")
+            @Html.DisplayNameFor(model => model.IsDone) 
         </th>
         <th>
             @Html.DisplayNameFor(model => model.List.ListTitle)
@@ -40,7 +39,16 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.IsDone)
+                    <a href="@Url.Action("ToggleDone", new { id=item.TaskID })">
+                        @if (item.IsDone)
+                    {
+                            <span class="glyphicon glyphicon-check"></span>
+                        }
+                        else
+                        {
+                            <span class="glyphicon glyphicon-unchecked"></span>
+                        }
+                    </a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.List.ListTitle)
